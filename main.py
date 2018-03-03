@@ -22,7 +22,8 @@ my_env[PYTHONPATH] = ":".join([
 ARCHIVE_URL = 'https://api.github.com/repos/{owner}/{repo}/tarball/{sha}'
 STATUS_URL = 'https://api.github.com/repos/{owner}/{repo}/statuses/{sha}'
 
-PEM = os.environ.get('PEM')
+PEM = '\n'.join(os.environ.get('PEM').split('\\n'))
+
 
 S3_REGION = 'eu-west-1'
 S3 = boto3.client('s3', region_name=S3_REGION)
