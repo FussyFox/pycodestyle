@@ -3,7 +3,6 @@ services:
 sudo: true
 language: python
 python:
-install: skip
 - '3.6'
 jobs:
   include:
