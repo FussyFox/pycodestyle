@@ -14,7 +14,10 @@ from botocore.vendored import requests
 
 my_env = os.environ.copy()
 PYTHONPATH = 'PYTHONPATH'
-my_env[PYTHONPATH] = ":".join([os.path.dirname(os.path.realpath(__file__)), my_env.get(PYTHONPATH, '')])
+my_env[PYTHONPATH] = ":".join([
+    os.path.dirname(os.path.realpath(__file__)),
+    my_env.get(PYTHONPATH, ''),
+])
 
 ARCHIVE_URL = 'https://api.github.com/repos/{owner}/{repo}/tarball/{sha}'
 STATUS_URL = 'https://api.github.com/repos/{owner}/{repo}/statuses/{sha}'
@@ -64,7 +67,9 @@ def parse_hook(hook):
         sha = hook['head_commit']['id']
     except KeyError:
         # Hook is pull request event
-        code_has_changed = hook['action'] in ["opened", "edited", "reopened"]
+        code_has_changed = hook['action'] in [
+            "opened", "edited", "reopened"
+        ]
         is_onwer = hook['pull_request']['user']['login'] == owner
         if code_has_changed and not is_onwer:
             sha = hook['pull_request']['head']['sha']
@@ -82,12 +87,16 @@ def get_token(installation_id):
         # Integration's GitHub identifier
         'iss': INTEGRATION_ID
     }
-    bearer = jwt.encode(payload, PEM, algorithm='RS256').decode(encoding='UTF-8')
+    bearer = jwt.encode(payload, PEM, algorithm='RS256')
     headers = {
         'Accept': 'application/vnd.github.machine-man-preview+json',
-        'Authorization': 'Bearer %s' % bearer
+        'Authorization': 'Bearer %s' % bearer.decode(encoding='UTF-8')
     }
-    res = requests.post('https://api.github.com/installations/%s/access_tokens' % installation_id, headers=headers)
+    url = (
+        'https://api.github.com/installations/'
+        '%s/access_tokens' % installation_id
+    )
+    res = requests.post(url, headers=headers)
     return res.json()['token']
 
 
@@ -108,7 +117,10 @@ def run_process(owner, repo, sha, code_path):
         Body=log,
         ContentType='text/plain'
     )
-    return process.returncode, "https://{0}.s3.amazonaws.com/{1}".format(BUCKET, key)
+    return (
+        process.returncode,
+        "https://{0}.s3.amazonaws.com/{1}".format(BUCKET, key),
+    )
 
 
 def handle(event, context):
