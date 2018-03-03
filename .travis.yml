@@ -1,11 +1,13 @@
-sudo: false
+services:
+- docker
+sudo: true
 language: python
 python:
 - '3.6'
 jobs:
   include:
   - stage: deploy
-    script: pip install -r requirements.txt -t .
+    script: ./build_with_docker.sh
     deploy:
       provider: lambda
       skip_cleanup: true
