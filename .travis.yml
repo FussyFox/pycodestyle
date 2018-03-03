@@ -7,6 +7,8 @@ install: skip
 - '3.6'
 jobs:
   include:
+  - stage: test
+    script: echo "Tests"
   - stage: deploy
     script: ./build_with_docker.sh
     deploy:
