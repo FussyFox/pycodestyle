@@ -3,6 +3,7 @@ services:
 sudo: true
 language: python
 python:
+install: skip
 - '3.6'
 jobs:
   include:
@@ -17,6 +18,7 @@ jobs:
       runtime: python3.6
       module_name: main
       handler_name: handle
+      timeout: 300
       zip: function.zip
       access_key_id: AKIAINENHLYKCWO3O7HA
       secret_access_key:
