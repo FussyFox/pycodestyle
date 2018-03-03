@@ -1,15 +1,22 @@
 """Lambda function that executes pycodestyle, a static file linter."""
+import logging
 import json
 import os
 import tarfile
 import tempfile
 import time
+import sys
 from io import BytesIO
 from subprocess import Popen, PIPE, STDOUT
 
 import boto3
 import jwt
 from botocore.vendored import requests
+
+
+root_logger = logging.getLogger('')
+root_logger.setLevel(logging.DEBUG)
+root_logger.addHandler(logging.StreamHandler(sys.stdout))
 
 
 my_env = os.environ.copy()
