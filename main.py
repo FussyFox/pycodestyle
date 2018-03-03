@@ -39,10 +39,12 @@ CMD_ARGS = [
 
 
 def get_hook(event):
+    """Get GitHub web hook data from full SNS message."""
     return json.loads(event['Records'][0]['Sns']['Message'])
 
 
 def download_code(owner, repo, sha, token):
+    """Download code to local filesystem storage."""
     archive_url = ARCHIVE_URL.format(owner=owner, repo=repo, sha=sha)
     headers = {
         'Authorization': 'token %s' % token
@@ -59,6 +61,13 @@ def download_code(owner, repo, sha, token):
 
 
 def parse_hook(hook):
+    """
+    Parse GitHub web hook and return relevant data.
+
+    Returns:
+        tuple[str, str, str]: Return owner, repository name and commit hash.
+
+    """
     repo = hook['repository']['name']
     owner = hook['repository']['owner']['login']
     sha = None
@@ -77,6 +86,7 @@ def parse_hook(hook):
 
 
 def get_token(installation_id):
+    """Get OAuth access token from GibHub via the installations API."""
     now = int(time.time())
     exp = 300
     payload = {
@@ -101,6 +111,13 @@ def get_token(installation_id):
 
 
 def run_process(owner, repo, sha, code_path):
+    """
+    Run linter command as sub-processes.
+
+    Returns:
+        tuple[int, str]: Tuple containing exit code and URI to log file.
+
+    """
     process = Popen(
         ['python', '-m', CMD] + CMD_ARGS,
         stdout=PIPE, stderr=STDOUT,
@@ -124,6 +141,7 @@ def run_process(owner, repo, sha, code_path):
 
 
 def handle(event, context):
+    """AWS Lambda function handler."""
     hook = get_hook(event)
     owner, repo, sha = parse_hook(hook)
 
