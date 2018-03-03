@@ -58,6 +58,7 @@ def download_code(owner, repo, sha, token):
         'Authorization': 'token %s' % token
     }
     response = requests.get(archive_url, headers=headers)
+    response.raise_for_status()
     with BytesIO() as bs:
         bs.write(response.content)
         bs.seek(0)
@@ -115,6 +116,7 @@ def get_token(installation_id):
         '%s/access_tokens' % installation_id
     )
     res = requests.post(url, headers=headers)
+    res.raise_for_status()
     return res.json()['token']
 
 
