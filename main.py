@@ -15,8 +15,10 @@ from botocore.vendored import requests
 
 
 root_logger = logging.getLogger('')
-root_logger.setLevel(logging.DEBUG)
+root_logger.setLevel(logging.INFO)
 root_logger.addHandler(logging.StreamHandler(sys.stdout))
+
+logger = logging.getLogger('lambda-lint-py')
 
 
 my_env = os.environ.copy()
@@ -160,16 +162,21 @@ def handle(event, context):
 
     installation_id = hook['installation']['id']
     status_url = STATUS_URL.format(owner=owner, repo=repo, sha=sha)
+    logger.info('getting tocken')
     token = get_token(installation_id)
+    logger.info(token)
     headers = {'Authorization': 'token %s' % token}
     data = {
         "state": "pending",
         "context": STANDARD,
     }
+    logger.info('setting status to pending')
     requests.post(status_url, json=data, headers=headers).raise_for_status()
 
+    logger.info('downloading code')
     code_path = download_code(owner, repo, sha, token)
     code, data["target_url"] = run_process(owner, repo, sha, code_path)
+    logger.info('linter exited with status code %s' % code)
 
     if code == 0:
         data.update({
@@ -181,5 +188,5 @@ def handle(event, context):
             "state": "failure",
             "description": "%s failed!" % CMD,
         })
-
+    logger.info('setting final status')
     requests.post(status_url, json=data, headers=headers).raise_for_status()
