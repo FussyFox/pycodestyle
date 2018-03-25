@@ -1,4 +1,4 @@
-cryptography
+cryptography==2.2.1
 lintipy==0.1.2
 pycodestyle
 PyJWT
