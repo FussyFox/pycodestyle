@@ -2,4 +2,4 @@
 
 from lintipy import Handler
 
-Handler('PEP8', 'pycodestyle', '.', )
+handle = Handler('PEP8', 'pycodestyle', '.', )
