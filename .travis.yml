@@ -10,6 +10,8 @@ jobs:
     script: ./build_with_docker.sh
     deploy:
       provider: lambda
+      edge:
+        branch: lambda-dot_match
       skip_cleanup: true
       function_name: lambda-lint_pycodestyle
       region: eu-west-1
