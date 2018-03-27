@@ -1,2 +1,2 @@
--e git+https://github.com/lambda-lint/lintipy.git@feature/synchronize#egg=lintipy
+lintipy==0.2.1
 pycodestyle==2.3.1
