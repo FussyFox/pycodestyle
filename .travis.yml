@@ -24,4 +24,4 @@ jobs:
       secret_access_key:
         secure: RQ0XhJGfgiFGA6FlmedEPi5XjLKYZIUbOsRMewnxrfjGVNZcJtq9tjTO+yrIzPH7UXAbGx2/EQ/6ttj0a2OhtTWPshsxj2qVXidzBqaZ/LpUGP9w6F9ewOuP9tvIZNfjId8z//lRsmpuUUV+T50TZqBO1XoZPU/SAknpmcosfdnkLfFkJbVfFXK4+2yMUzf1eGNrsJQ+5lSep3AVUoBdbTjnnRDjTwX+2GoVwuf+eCuQYQZ9h5iT4sHhRzDmFopApn3kGFHIcTfgPeTAr17kk0rzM/jvz44yjtLvKFy6oY+DFPE7PkNLrKivujLfc8lKdKeec4O7qUciopzH2yH4JhI7+OOhGzjpiNPwFnMkJEmKF/fmARwEMjzr5LMZPcyJrbKZkp3b8dFzicXxuCFWsrXRE/sR/9EFchaakQZgkqJLElT7MifbBB7K4DmmWGTzXYrUid5jpjXzEKW4RGUsX+74T0Q9y55zMSGlxa10WyCWng7PjBu/xIDUn1n4I0tpFUnaWyGS34Pth7zn7NP1JyrNmD0xGH+Unbd7hYxix7XEiVgCfDnatXM/ddyUbiDsioZc+DvqRRcCpdEadanlfhHdi5tWvb5ekWvX5BcHyuP4tgH5ew00WdIWRsOJzg/6g8Z2ZzeakzZh3Cfgkso08WdyDrDUDj0Hg69h8YRhDIo=
       on:
-        repo: lambda-lint/lambda-pycodestyle
+        repo: LambdaLint/pycodestyle
