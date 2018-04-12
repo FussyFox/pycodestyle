@@ -10,4 +10,5 @@ root_logger.addHandler(logging.StreamHandler(sys.stdout))
 
 
 def handle(*args, **kwargs):
+    """Handle that will be called by AWS lambda."""
     Handler('PEP8', 'pycodestyle', '.', )(*args, **kwargs)
