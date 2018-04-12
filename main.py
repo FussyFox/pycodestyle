@@ -11,4 +11,3 @@ root_logger.addHandler(logging.StreamHandler(sys.stdout))
 
 def handle(*args, **kwargs):
     Handler('PEP8', 'pycodestyle', '.', )(*args, **kwargs)
-
