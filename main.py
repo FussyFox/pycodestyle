@@ -2,7 +2,7 @@
 import logging
 import sys
 
-from lintipy import Handler
+from lintipy import CheckRun
 
 root_logger = logging.getLogger('')
 root_logger.setLevel(logging.DEBUG)
@@ -11,4 +11,4 @@ root_logger.addHandler(logging.StreamHandler(sys.stdout))
 
 def handle(*args, **kwargs):
     """Handle that will be called by AWS lambda."""
-    Handler('PEP8', 'pycodestyle', '.', )(*args, **kwargs)
+    CheckRun('PEP8', 'pycodestyle', '.', )(*args, **kwargs)
