@@ -9,6 +9,4 @@ root_logger.setLevel(logging.DEBUG)
 root_logger.addHandler(logging.StreamHandler(sys.stdout))
 
 
-def handle(*args, **kwargs):
-    """Handle that will be called by AWS lambda."""
-    CheckRun('pycodestyle', 'pycodestyle', '.', )(*args, **kwargs)
+handle = CheckRun.as_handler('pycodestyle', 'pycodestyle', '.', )
