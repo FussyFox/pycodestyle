@@ -24,4 +24,4 @@ jobs:
       secret_access_key:
         secure: EP8/o2FNOx4qRXPVN/Q+6AGkse56FTcwcGDIXnP+Dg/mfI68/d9ovxKmbKfFzQ9GqM/ONLcok0Q7cnvhMRb7YVEGi1uXBeKW173huhgBGDmFdkp1H0SD25Rn9tO2CrkntgICuXI0U/FauY9EbqDgF7yU+wZ1Rj14WM8QnprekF5dJ0nTvo7ehmzj2skUQlCWutuPFBu4loQc+oL7uwozX96TA4EtIQcOPdIWMrunpQTEAjThBo6pF1O6LVqLMUMBBHFqjOUFWIuHfnBElM+/P1D/DU6KX7Rn38hzshn+M66q231js3Dt9q8zxOJGGyVQ0XCbQxS53f07g0gHX+pLsST24+KPLIgCScZlcbzYk4yA4P33LoJ/pQqe8/z9Yi2+s57YssKdhwdCFdya+vCgoX1dZYZV9QxcU2NLyLVU767HE8BTmr0x2pS7O957mLFoOp7ycyoCquUxvQYUnF7lCsGTdHujoBWWfzjzZo6zUAm/Ya7xDeF699yycZAQMSfJBXdaMl9DEcmnGOQLG3zkYaClH4kmZpRTbAA4EovxC5bk9xFMtYrYKo7RCnjdShmQJG3/5Wvvys3JwL98Ce//mZvvlDZ7aZam6Klvmq34HmowjFXlJpWYuzEfOu/n6ctlaefuYGQGeNwZoJtfYJK5so905i9r/jylndAxO1abwFk=
       on:
-        repo: LambdaLint/pycodestyle
+        repo: FussyFox/pycodestyle
