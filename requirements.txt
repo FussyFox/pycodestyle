@@ -1,2 +1,2 @@
-lintipy==1.2.1
+lintipy==1.2.2
 pycodestyle==2.5.0
