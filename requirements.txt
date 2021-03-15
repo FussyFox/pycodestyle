@@ -1,2 +1,2 @@
 lintipy==1.4.4
-pycodestyle==2.6.0
+pycodestyle==2.7.0
